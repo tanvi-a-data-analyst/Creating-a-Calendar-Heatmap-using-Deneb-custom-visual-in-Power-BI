@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": { "name": "dataset" },
+  "transform": [
+    { "calculate": "toNumber(datum['Week No_'])", "as": "WeekNum" }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 2,
+    "stroke": "#ffffff",
+    "strokeWidth": 1.5
+  },
+  "width": { "step": 30 },
+  "height": { "step": 18 },
+  "encoding": {
+    "x": {
+      "field": "WeekNum",
+      "type": "ordinal",
+      "title": null,
+      "scale":{"paddingInner": 0.1},
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "labelFontSize": 9,
+        "domain": false,
+        "ticks": false,
+        "labelExpr": "'W' + (datum.value < 10 ? '0' + datum.value : datum.value)"
+      }
+    },
+    "y": {
+      "field": "LineKey",
+      "type": "nominal",
+      "title": null,
+      "sort": { "field": "production_step" },
+      "axis": { "labelFontSize": 10, "domain": false, "ticks": false }
+    },
+    "color": {
+      "condition": {
+        "test": "!datum['Shutdown Days'] || datum['Shutdown Days'] == 0",
+        "value": "#EDEDED"
+      },
+      "field": "Shutdown Days",
+      "type": "quantitative",
+      "scale": { "scheme": "viridis" },
+      "legend": { "title": "Shutdown Days" }
+    },
+    "tooltip": [
+      { "field": "LineKey", "type": "nominal" },
+      { "field": "WeekNum", "type": "ordinal", "title": "Week" },
+      { "field": "Shutdown Days", "type": "quantitative" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "grid": false }
+  }
+}

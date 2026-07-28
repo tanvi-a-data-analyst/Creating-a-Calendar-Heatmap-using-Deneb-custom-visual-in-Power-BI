@@ -3,6 +3,3 @@ Required a visual that would accurately (and beautifully) depict the number of d
 are shut down for across a year. These shutdown days are marked against a year's week numbers. One factory combined with its production line,
 can have multiple shutdown instances across a year.
 
-<img width="1387" height="615" alt="image" src="https://github.com/user-attachments/assets/3dff5839-e73e-4d45-a9ea-18895784af47" />
-
-
